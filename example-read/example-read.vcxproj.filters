@@ -1,0 +1,60 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxAlembicReader.cpp">
+      <Filter>addons\ofxAlembic\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxAlembicType.cpp">
+      <Filter>addons\ofxAlembic\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxAlembicUtil.cpp">
+      <Filter>addons\ofxAlembic\src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\ofxAlembicWriter.cpp">
+      <Filter>addons\ofxAlembic\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\testApp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="src">
+      <UniqueIdentifier>{d8376475-7454-4a24-b08a-aac121d3ad6f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons">
+      <UniqueIdentifier>{03c8ef5a-a0ba-4d4b-b1c2-3379167b6c37}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAlembic">
+      <UniqueIdentifier>{18501b42-ed8e-41c7-92fc-d6cba9db356f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="addons\ofxAlembic\src">
+      <UniqueIdentifier>{f2a3d2ab-cdc6-4a16-a422-46746f5af630}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\src\ofxAlembic.h">
+      <Filter>addons\ofxAlembic\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxAlembicReader.h">
+      <Filter>addons\ofxAlembic\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxAlembicType.h">
+      <Filter>addons\ofxAlembic\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxAlembicUtil.h">
+      <Filter>addons\ofxAlembic\src</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\ofxAlembicWriter.h">
+      <Filter>addons\ofxAlembic\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\testApp.h">
+      <Filter>src</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="icon.rc" />
+  </ItemGroup>
+</Project>

@@ -1,9 +1,10 @@
 #pragma once
 
+#include "ofMain.h"
+
 #include <Alembic/AbcGeom/All.h>
 #include <Alembic/AbcCoreHDF5/All.h>
 
-#include "ofMain.h"
 
 #include "ofxAlembicUtil.h"
 

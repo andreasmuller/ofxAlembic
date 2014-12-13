@@ -13,8 +13,11 @@ void testApp::setup()
 	ofSetFrameRate(60);
 	ofBackground(0);
 	
-	string path = "sample.abc";
-	
+	string path = "sample7_cursor_hd5.abc";
+	ofDisableArbTex();
+
+	texture.loadImage("textSphere_cursor.png");
+
 	// load allembic file
 	abc.open(path);
 	
@@ -39,8 +42,10 @@ void testApp::update()
 //--------------------------------------------------------------
 void testApp::draw()
 {
-	cam.begin();
+	ofFill();
 
+	cam.begin();
+	/*
 	glPointSize(4);
 	
 	// get meshes and draw
@@ -73,7 +78,27 @@ void testApp::draw()
 			curves[i].draw();
 	}
 	
+	*/
+
 	// or simply, abc.draw();
+	
+	//ofMesh mesh;
+	//abc.get("/Null/Sphere/SphereShape", mesh);
+	//cout << mesh.getNumNormals() << endl;
+
+	//ofLight l;
+	//l.setPosition(mesh.getCentroid() + ofVec3f(0,0,0));
+	//l.enable();
+	//ofSetColor(ofColor::white);
+	//ofSetColor(255, 0, 0);
+	ofEnableDepthTest();
+	texture.getTextureReference().bind();
+//	mesh.draw();
+	abc.draw();
+	texture.getTextureReference().unbind();
+	ofDisableDepthTest();
+
+	abc.draw();
 
 	cam.end();
 	

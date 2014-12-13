@@ -1,9 +1,10 @@
 #pragma once
 
+#include "ofMain.h"
+
 #include <Alembic/AbcGeom/All.h>
 #include <Alembic/AbcCoreHDF5/All.h>
 
-#include "ofMain.h"
 
 #include "ofxAlembicUtil.h"
 #include "ofxAlembicType.h"
@@ -155,7 +156,9 @@ protected:
 	Alembic::AbcGeom::IPoints m_points;
 
 	void updateWithTimeInternal(double time, Imath::M44f& transform);
-	void drawInternal() { points.draw(); }
+	void drawInternal() { 
+		points.draw(); 
+	}
 };
 
 class ofxAlembic::ICurves : public ofxAlembic::IGeom
@@ -178,7 +181,9 @@ protected:
 	Alembic::AbcGeom::ICurves m_curves;
 
 	void updateWithTimeInternal(double time, Imath::M44f& transform);
-	void drawInternal() { curves.draw(); }
+	void drawInternal() { 
+		curves.draw(); 
+	}
 };
 
 class ofxAlembic::IPolyMesh : public ofxAlembic::IGeom
@@ -201,7 +206,9 @@ protected:
 	Alembic::AbcGeom::IPolyMesh m_polyMesh;
 
 	void updateWithTimeInternal(double time, Imath::M44f& transform);
-	void drawInternal() { polymesh.draw(); }
+	void drawInternal() { 
+		polymesh.draw(); 
+	}
 };
 
 //
