@@ -336,7 +336,21 @@ void PolyMesh::set(IPolyMeshSchema &schema, float time, const Imath::M44f& trans
 
 void PolyMesh::draw()
 {
-	mesh.drawWireframe();
+	//CW: change this
+	/*
+	shader.begin();
+	ofSetColor();
+	*/
+	//ofSetColor( 255, 0, 255);
+
+	//mesh.drawWireframe();
+	mesh.draw();
+}
+
+void PolyMesh::drawTextured( ofImage *tex ){
+	tex->getTextureReference().bind();
+		mesh.draw();
+	tex->getTextureReference().unbind();
 }
 
 #pragma mark - Curves

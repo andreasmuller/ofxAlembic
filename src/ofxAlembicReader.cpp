@@ -369,6 +369,16 @@ void IGeom::draw()
 	}
 }
 
+void IGeom::drawTextured( ofImage *tex ){
+	drawInternalTextured( tex );
+
+	for (int i = 0; i < m_children.size(); i++)
+	{
+		ofPtr<IGeom> c = m_children[i];
+		c->drawTextured( tex );
+	}
+}
+
 string IGeom::getName() const
 {
 	return m_object.getFullName();

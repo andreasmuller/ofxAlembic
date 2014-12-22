@@ -5,6 +5,9 @@
 ofEasyCam cam;
 
 ofxAlembic::Reader abc;
+int numTextured;
+
+std::vector<std::string>	meshNames;
 
 //--------------------------------------------------------------
 void testApp::setup()
@@ -12,8 +15,10 @@ void testApp::setup()
 	ofSetVerticalSync(true);
 	ofSetFrameRate(60);
 	ofBackground(0);
+
+	numTextured = 0;
 	
-	string path = "sample7_cursor_hd5.abc";
+	string path = "3DCursor_Alembic.abc";
 	ofDisableArbTex();
 
 	texture.loadImage("textSphere_cursor.png");
@@ -23,6 +28,8 @@ void testApp::setup()
 	
 	// show all drawable names
 	abc.dumpNames();
+
+	meshNames = abc.getNames();
 }
 
 void testApp::exit()
@@ -91,14 +98,49 @@ void testApp::draw()
 	//l.enable();
 	//ofSetColor(ofColor::white);
 	//ofSetColor(255, 0, 0);
+	/*
 	ofEnableDepthTest();
 	texture.getTextureReference().bind();
 //	mesh.draw();
 	abc.draw();
 	texture.getTextureReference().unbind();
 	ofDisableDepthTest();
+	*/
+	//glCullFace( GL_FRONT );
 
-	abc.draw();
+	//abc.draw();
+
+	ofEnableDepthTest();
+
+	glEnable( GL_CULL_FACE );
+
+	glCullFace( GL_BACK );
+	//*
+
+	ofSetColor( 255, 255, 255, 255.0 * 0.5 );
+
+	for( int i=0; i<meshNames.size(); i++ ){
+		ofxAlembic::IGeom *geo = abc.get( meshNames[i] );
+		if( i == numTextured ){
+			geo->drawTextured( &texture );
+		}else{
+			geo->draw();
+		}
+	}
+	//*/
+	glCullFace( GL_FRONT );
+	ofSetColor( 255, 255, 255, 255.0 * 0.5 );
+	//*
+	for( int i=0; i<meshNames.size(); i++ ){
+		ofxAlembic::IGeom *geo = abc.get( meshNames[i] );
+		if( i == numTextured ){
+			geo->drawTextured( &texture );
+		}else{
+			geo->draw();
+		}
+	}
+	//*/
+	glDisable( GL_CULL_FACE );
 
 	cam.end();
 	
@@ -110,7 +152,7 @@ void testApp::draw()
 //--------------------------------------------------------------
 void testApp::keyPressed(int key)
 {
-	
+	numTextured = (numTextured + 1) % meshNames.size();	
 }
 
 //--------------------------------------------------------------

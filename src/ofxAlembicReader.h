@@ -101,6 +101,7 @@ public:
 	virtual bool valid() { return m_object; }
 
 	void draw();
+	void drawTextured( ofImage *tex = NULL );
 
 	string getName() const;
 	virtual const char* getTypeName() const { return ""; }
@@ -129,6 +130,7 @@ protected:
 
 	virtual void updateWithTimeInternal(double time, Imath::M44f& transform) {}
 	virtual void drawInternal() {}
+	virtual void drawInternalTextured( ofImage *tex ) {}
 
 	Alembic::AbcGeom::chrono_t m_minTime;
 	Alembic::AbcGeom::chrono_t m_maxTime;
@@ -208,6 +210,9 @@ protected:
 	void updateWithTimeInternal(double time, Imath::M44f& transform);
 	void drawInternal() { 
 		polymesh.draw(); 
+	}
+	void drawInternalTextured( ofImage *tex ) { 
+		polymesh.drawTextured( tex ); 
 	}
 };
 

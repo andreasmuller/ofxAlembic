@@ -51,6 +51,7 @@ public:
 	void set(Alembic::AbcGeom::IPolyMeshSchema &schema, float time, const Imath::M44f& transform);
 
 	void draw();
+	void drawTextured( ofImage *tex );
 };
 
 class ofxAlembic::Points
