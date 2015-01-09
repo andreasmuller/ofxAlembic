@@ -5,9 +5,17 @@
       <Configuration>Debug</Configuration>
       <Platform>Win32</Platform>
     </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
     <ProjectConfiguration Include="Release|Win32">
       <Configuration>Release</Configuration>
       <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
@@ -21,7 +29,18 @@
     <CharacterSet>Unicode</CharacterSet>
     <PlatformToolset>v110</PlatformToolset>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <PlatformToolset>v110</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <CharacterSet>Unicode</CharacterSet>
     <WholeProgramOptimization>true</WholeProgramOptimization>
@@ -32,9 +51,17 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease.props" />
   </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksRelease64.props" />
+  </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="..\..\..\libs\openFrameworksCompiled\project\vs\openFrameworksDebug64.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -44,9 +71,17 @@
     <LinkIncremental>true</LinkIncremental>
     <GenerateManifest>true</GenerateManifest>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetName>$(ProjectName)_debug</TargetName>
+    <LinkIncremental>true</LinkIncremental>
+    <GenerateManifest>true</GenerateManifest>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>bin\</OutDir>
     <IntDir>obj\$(Configuration)\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -69,6 +104,25 @@
       <AdditionalLibraryDirectories>..\..\..\addons\ofxAlembic\libs\alembic\lib\vs\debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxAlembic\libs\alembic\include;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\Abc;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcCollection;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcCoreAbstract;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcCoreFactory;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcCoreHDF5;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcCoreOgawa;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcGeom;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcMaterial;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\Ogawa;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\Util;..\..\..\addons\ofxAlembic\libs\hdf5\include;..\..\..\addons\ofxAlembic\libs\hdf5\include\cpp;..\..\..\addons\ofxAlembic\libs\hdf5\include\hl;..\..\..\addons\ofxAlembic\src;..\..\..\addons\ofxAlembic\libs\ilmbase\include\Half;..\..\..\addons\ofxAlembic\libs\ilmbase\include\IexMath;..\..\..\addons\ofxAlembic\libs\ilmbase\include\Imath;..\..\..\addons\ofxAlembic\libs\ilmbase\include\Iex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>AlembicAbc.lib;AlembicAbcCollection.lib;AlembicAbcCoreAbstract.lib;AlembicAbcCoreFactory.lib;AlembicAbcCoreHDF5.lib;AlembicAbcCoreOgawa.lib;AlembicAbcGeom.lib;AlembicAbcMaterial.lib;AlembicAbcOpenGL.lib;AlembicIlmBase.lib;AlembicOgawa.lib;AlembicOpenEXR.lib;AlembicUtil.lib;AlembicZLIB.lib;hdf5.lib;hdf5_cpp.lib;hdf5_hl.lib;hdf5_hl_cpp.lib;hdf5_tools.lib;libszip.lib;libzlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxAlembic\libs\alembic\lib\vs64\debug;..\..\..\addons\ofxAlembic\libs\hdf5\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WholeProgramOptimization>false</WholeProgramOptimization>
@@ -87,6 +141,26 @@
       <RandomizedBaseAddress>false</RandomizedBaseAddress>
       <AdditionalDependencies>Alembic.lib;AlembicAbcOpenGL.lib;AlembicIlmBase.lib;AlembicOpenEXR.lib;AlembicZLIB.lib;hdf5.lib;hdf5_hl.lib;libszip.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <AdditionalLibraryDirectories>..\..\..\addons\ofxAlembic\libs\alembic\lib\vs\release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WholeProgramOptimization>false</WholeProgramOptimization>
+      <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\..\..\addons\ofxAlembic\libs\alembic\include;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\Abc;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcCollection;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcCoreAbstract;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcCoreFactory;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcCoreHDF5;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcCoreOgawa;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcGeom;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\AbcMaterial;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\Ogawa;..\..\..\addons\ofxAlembic\libs\alembic\include\Alembic\Util;..\..\..\addons\ofxAlembic\libs\hdf5\include;..\..\..\addons\ofxAlembic\libs\hdf5\include\cpp;..\..\..\addons\ofxAlembic\libs\hdf5\include\hl;..\..\..\addons\ofxAlembic\src;..\..\..\addons\ofxAlembic\libs\ilmbase\include\Half;..\..\..\addons\ofxAlembic\libs\ilmbase\include\IexMath;..\..\..\addons\ofxAlembic\libs\ilmbase\include\Imath;..\..\..\addons\ofxAlembic\libs\ilmbase\include\Iex;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <CompileAs>CompileAsCpp</CompileAs>
+    </ClCompile>
+    <Link>
+      <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <RandomizedBaseAddress>false</RandomizedBaseAddress>
+      <AdditionalDependencies>AlembicAbc.lib;AlembicAbcCollection.lib;AlembicAbcCoreAbstract.lib;AlembicAbcCoreFactory.lib;AlembicAbcCoreHDF5.lib;AlembicAbcCoreOgawa.lib;AlembicAbcGeom.lib;AlembicAbcMaterial.lib;AlembicAbcOpenGL.lib;AlembicIlmBase.lib;AlembicOgawa.lib;AlembicOpenEXR.lib;AlembicUtil.lib;AlembicZLIB.lib;hdf5.lib;hdf5_cpp.lib;hdf5_hl.lib;hdf5_hl_cpp.lib;hdf5_tools.lib;libszip.lib;libzlib.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\addons\ofxAlembic\libs\alembic\lib\vs64\debug;..\..\..\addons\ofxAlembic\libs\hdf5\lib\vs64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -113,6 +187,7 @@
   <ItemGroup>
     <ResourceCompile Include="icon.rc">
       <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">/D_DEBUG %(AdditionalOptions)</AdditionalOptions>
     </ResourceCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
