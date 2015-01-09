@@ -21,5 +21,5 @@ public:
 	void dragEvent(ofDragInfo dragInfo);
 	void gotMessage(ofMessage msg);
 	
-	ofImage texture;
+	//ofImage texture;
 };

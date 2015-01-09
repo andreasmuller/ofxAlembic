@@ -16,12 +16,12 @@ void testApp::setup()
 	ofSetFrameRate(60);
 	ofBackground(0);
 
-	numTextured = 0;
+	numTextured = -1; //0;
 	
-	string path = "3DCursor_Alembic.abc";
+	string path = "alembic_test.abc";  //"3DCursor_Alembic.abc";
 	ofDisableArbTex();
 
-	texture.loadImage("textSphere_cursor.png");
+	//texture.loadImage("textSphere_cursor.png");
 
 	// load allembic file
 	abc.open(path);
@@ -49,8 +49,6 @@ void testApp::update()
 //--------------------------------------------------------------
 void testApp::draw()
 {
-	ofFill();
-
 	cam.begin();
 	/*
 	glPointSize(4);
@@ -109,7 +107,7 @@ void testApp::draw()
 	//glCullFace( GL_FRONT );
 
 	//abc.draw();
-
+	/*
 	ofEnableDepthTest();
 
 	glEnable( GL_CULL_FACE );
@@ -121,25 +119,26 @@ void testApp::draw()
 
 	for( int i=0; i<meshNames.size(); i++ ){
 		ofxAlembic::IGeom *geo = abc.get( meshNames[i] );
-		if( i == numTextured ){
-			geo->drawTextured( &texture );
-		}else{
+//		if( i == numTextured ){
+//			geo->drawTextured( &texture );
+//		}else{
 			geo->draw();
-		}
+//		}
 	}
 	//*/
+	
 	glCullFace( GL_FRONT );
 	ofSetColor( 255, 255, 255, 255.0 * 0.5 );
-	//*
+	
 	for( int i=0; i<meshNames.size(); i++ ){
 		ofxAlembic::IGeom *geo = abc.get( meshNames[i] );
-		if( i == numTextured ){
-			geo->drawTextured( &texture );
-		}else{
+//		if( i == numTextured ){
+//			geo->drawTextured( &texture );
+//		}else{
 			geo->draw();
-		}
+//		}
 	}
-	//*/
+	//
 	glDisable( GL_CULL_FACE );
 
 	cam.end();
