@@ -343,13 +343,20 @@ void PolyMesh::draw()
 	*/
 	//ofSetColor( 255, 0, 255);
 
-	//mesh.drawWireframe();
-	mesh.draw();
+	if( ofGetFill() == OF_OUTLINE ){
+		mesh.drawWireframe();
+	}else{
+		mesh.draw();
+	}
 }
 
 void PolyMesh::drawTextured( ofImage *tex ){
 	tex->getTextureReference().bind();
+	if( ofGetFill() == OF_OUTLINE ){
+		mesh.drawWireframe();
+	}else{
 		mesh.draw();
+	}
 	tex->getTextureReference().unbind();
 }
 
