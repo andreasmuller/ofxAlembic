@@ -37,6 +37,8 @@
 #ifndef _Alembic_Abc_ArchiveInfo_h_
 #define _Alembic_Abc_ArchiveInfo_h_
 
+#include <algorithm>
+
 #include <Alembic/Abc/Foundation.h>
 #include <Alembic/Abc/IArchive.h>
 #include <Alembic/Abc/OArchive.h>
