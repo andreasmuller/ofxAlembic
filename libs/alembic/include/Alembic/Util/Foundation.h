@@ -93,7 +93,16 @@
 
 // needed for mutex stuff
 #include <Windows.h>
+#include <synchapi.h>
 #endif
+
+// test
+#ifdef UNICODE
+#define CreateMutex  CreateMutexW
+#else
+#define CreateMutex  CreateMutexA
+#endif // !UNICODE
+// -- test
 
 #ifndef ALEMBIC_VERSION_NS
 #define ALEMBIC_VERSION_NS v7
